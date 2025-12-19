@@ -45,11 +45,11 @@ pipeline {
                         currentBuild.result = 'FAILURE'
                     }
 
-                    def message = buildPreMergeMessage(
-                        compileSuccess,
-                        failureReason,
-                        env.BUILD_LOCATION
-                    )
+                    // def message = buildPreMergeMessage(
+                    //     compileSuccess,
+                    //     failureReason,
+                    //     env.BUILD_LOCATION
+                    // )
 
                     // postPrComment(message)
 
