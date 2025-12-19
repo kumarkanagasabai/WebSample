@@ -1,26 +1,23 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
+
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddRazorPages();
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseExceptionHandler("/Error", createScopeForErrors: true);
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 
-app.UseRouting();
+// Serves wwwroot of the app and static web assets from referenced projects
+// app.MapStaticAssets();
 
-app.UseAuthorization();
+// Middleware-based static files (still fine to keep for wwwroot)
+app.UseStaticFiles();
 
-app.MapStaticAssets();
-app.MapRazorPages()
-   .WithStaticAssets();
+app.MapGet("/", () => "Hello");
 
 app.Run();
