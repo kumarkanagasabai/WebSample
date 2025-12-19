@@ -13,7 +13,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // Serves wwwroot of the app and static web assets from referenced projects
-app.MapStaticAssets();
+// app.MapStaticAssets();
 
 // Middleware-based static files (still fine to keep for wwwroot)
 app.UseStaticFiles();
